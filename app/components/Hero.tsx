@@ -125,7 +125,7 @@ export default function Hero() {
         </motion.p>
       </div>
 
-      {/* Hero image + tagline overlay (test04 cropped to 2.2:1) */}
+      {/* Hero image + tagline overlay */}
       <motion.div
         custom={1.15}
         initial="hidden"
@@ -134,15 +134,15 @@ export default function Hero() {
         className="relative mt-10 md:mt-14 w-full overflow-hidden"
       >
         <Image
-          src="/test04-hero.jpeg"
-          alt="Sooryun Yoon photographing a spatial installation"
+          src="/test04.jpeg"
+          alt="Glass and mixed-media sculptural materials"
           width={4032}
-          height={1833}
+          height={3024}
           priority
           className="block w-full h-auto"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a18]/80 via-[#1a1a18]/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a18]/55 via-transparent to-transparent pointer-events-none" />
         <p
           className="absolute bottom-6 md:bottom-10 left-0 right-0 px-6 md:px-16 lg:px-24 text-[#f4f0eb] text-[clamp(0.5625rem,1.85vw,1.125rem)] tracking-[0.03em] whitespace-nowrap text-center md:text-right italic overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden [text-shadow:0_1px_24px_rgba(0,0,0,0.45)]"
           style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400 }}

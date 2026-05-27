@@ -120,8 +120,8 @@ export default function Contact() {
           className="flex flex-col sm:flex-row items-start sm:items-center gap-6"
         >
           <a
-            href="/resume.pdf"
-            download
+            href="/Sooryun_Yoon_Harry_Rosen_Application.pdf"
+            download="Sooryun_Yoon_Harry_Rosen_Application.pdf"
             className="inline-flex items-center gap-4 bg-[#faf9f7] text-[#1a1a18] px-8 py-4 text-xs tracking-[0.2em] uppercase hover:bg-[#e8e2d9] transition-all duration-300"
             style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
           >
