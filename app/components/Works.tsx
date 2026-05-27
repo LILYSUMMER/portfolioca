@@ -15,7 +15,8 @@ interface Project {
   tags: string[];
   image?: string;
   video?: string;
-  span: "tall" | "wide" | "square";
+  mediaWidth?: number;
+  mediaHeight?: number;
 }
 
 const projects: Project[] = [
@@ -28,7 +29,8 @@ const projects: Project[] = [
       "Hand-fabricated sculptural props that blur the line between art object and display fixture. Each piece is built with precision, material intelligence, and an eye for luxury context.",
     tags: ["Sculpture", "Prop Fabrication", "Mixed Media"],
     image: "/test02.jpeg",
-    span: "tall",
+    mediaWidth: 4032,
+    mediaHeight: 3024,
   },
   {
     id: 2,
@@ -39,7 +41,8 @@ const projects: Project[] = [
       "Large-scale physical booth installations designed for Epispace — transforming raw architecture into curated brand worlds through light, material, and spatial flow.",
     tags: ["Spatial Design", "Installation Art", "Brand Environments"],
     image: "/test03.jpeg",
-    span: "wide",
+    mediaWidth: 4032,
+    mediaHeight: 3024,
   },
   {
     id: 3,
@@ -50,20 +53,21 @@ const projects: Project[] = [
       "Concept-driven VM layouts and 3D spatial arrangements that translate brand narrative into physical retail experience — balancing editorial restraint with commercial impact.",
     tags: ["Visual Merchandising", "3D Concepts", "Retail Design"],
     video: "/test01.mp4",
-    span: "square",
   },
 ];
 
 function ProjectCard({ project, delay }: { project: Project; delay: number }) {
   const [hovered, setHovered] = useState(false);
+  const [videoSize, setVideoSize] = useState<{
+    width: number;
+    height: number;
+  } | null>(null);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
-  const aspectMap = {
-    tall: "aspect-[3/4]",
-    wide: "aspect-[16/10]",
-    square: "aspect-[4/3]",
-  };
+  const mediaClass = `block w-full h-auto transition-all duration-700 ${
+    hovered ? "scale-105 grayscale-0" : "scale-100 grayscale"
+  }`;
 
   return (
     <motion.div
@@ -75,10 +79,8 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Media container */}
-      <div
-        className={`relative ${aspectMap[project.span]} overflow-hidden bg-[#e8e2d9] mb-6 cursor-pointer`}
-      >
+      {/* Media container — height follows original aspect ratio */}
+      <div className="relative overflow-hidden bg-[#e8e2d9] mb-6 cursor-pointer">
         {project.video ? (
           <video
             src={project.video}
@@ -87,19 +89,26 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
             loop
             playsInline
             aria-label={project.title}
-            className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ${
-              hovered ? "scale-105 grayscale-0" : "scale-100 grayscale"
-            }`}
+            onLoadedMetadata={(event) => {
+              const { videoWidth, videoHeight } = event.currentTarget;
+              if (videoWidth > 0 && videoHeight > 0) {
+                setVideoSize({ width: videoWidth, height: videoHeight });
+              }
+            }}
+            width={videoSize?.width}
+            height={videoSize?.height}
+            className={mediaClass}
           />
         ) : (
-          project.image && (
+          project.image &&
+          project.mediaWidth &&
+          project.mediaHeight && (
             <Image
               src={project.image}
               alt={project.title}
-              fill
-              className={`object-cover transition-all duration-700 ${
-                hovered ? "scale-105 grayscale-0" : "scale-100 grayscale"
-              }`}
+              width={project.mediaWidth}
+              height={project.mediaHeight}
+              className={mediaClass}
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           )

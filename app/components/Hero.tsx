@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
+import Image from "next/image";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -112,31 +113,42 @@ export default function Hero() {
           className="w-16 h-px bg-[#8a8880] mb-8"
         />
 
-        {/* Subtitle and tagline */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <motion.p
-            custom={1.0}
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            className="text-sm md:text-base tracking-[0.1em] uppercase text-[#2c2c2a]"
-            style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
-          >
-            Visual Presentation &amp; Spatial Design
-          </motion.p>
-
-          <motion.p
-            custom={1.15}
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            className="text-sm text-[#8a8880] max-w-sm leading-relaxed"
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, fontStyle: "italic" }}
-          >
-            Bridging Fine Arts, Sculpture, and Retail Merchandising with a Maker&apos;s Mindset.
-          </motion.p>
-        </div>
+        <motion.p
+          custom={1.0}
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          className="text-sm md:text-base tracking-[0.1em] uppercase text-[#2c2c2a]"
+          style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
+        >
+          Visual Presentation &amp; Spatial Design
+        </motion.p>
       </div>
+
+      {/* Portrait + tagline overlay */}
+      <motion.div
+        custom={1.15}
+        initial="hidden"
+        animate="visible"
+        variants={fadeUp}
+        className="relative mt-10 md:mt-14 w-full aspect-[16/10] md:aspect-[2.2/1] min-h-[240px] md:min-h-[340px]"
+      >
+        <Image
+          src="/test00.jpeg"
+          alt="Sooryun Yoon"
+          fill
+          priority
+          className="object-cover object-[center_20%]"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a18]/80 via-[#1a1a18]/30 to-transparent" />
+        <p
+          className="absolute bottom-6 md:bottom-10 left-0 right-0 px-6 md:px-16 lg:px-24 text-[#f4f0eb] text-[clamp(0.5625rem,1.85vw,1.125rem)] tracking-[0.03em] whitespace-nowrap text-center md:text-right italic overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden [text-shadow:0_1px_24px_rgba(0,0,0,0.45)]"
+          style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400 }}
+        >
+          Bridging Fine Arts, Sculpture, and Retail Merchandising with a Maker&apos;s Mindset.
+        </p>
+      </motion.div>
     </section>
   );
 }
