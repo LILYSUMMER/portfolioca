@@ -125,20 +125,21 @@ export default function Hero() {
         </motion.p>
       </div>
 
-      {/* Portrait + tagline overlay */}
+      {/* Hero image + tagline overlay (test04 cropped to 2.2:1) */}
       <motion.div
         custom={1.15}
         initial="hidden"
         animate="visible"
         variants={fadeUp}
-        className="relative mt-10 md:mt-14 w-full aspect-[16/10] md:aspect-[2.2/1] min-h-[240px] md:min-h-[340px]"
+        className="relative mt-10 md:mt-14 w-full overflow-hidden"
       >
         <Image
-          src="/test00.jpeg"
-          alt="Sooryun Yoon"
-          fill
+          src="/test04-hero.jpeg"
+          alt="Sooryun Yoon photographing a spatial installation"
+          width={4032}
+          height={1833}
           priority
-          className="object-cover object-[center_20%]"
+          className="block w-full h-auto"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a18]/80 via-[#1a1a18]/30 to-transparent" />
