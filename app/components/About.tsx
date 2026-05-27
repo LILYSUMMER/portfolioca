@@ -139,7 +139,7 @@ export default function About() {
           >
             <div className="relative aspect-[3/4] bg-[#e8e2d9] overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=800&q=80"
+                src="/test00.jpeg"
                 alt="Sooryun Yoon — Visual Presentation Artist"
                 fill
                 className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
