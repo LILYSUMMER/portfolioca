@@ -22,9 +22,9 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="bg-[#1a1a18] text-[#faf9f7] py-28 md:py-40 px-8 md:px-20 lg:px-32"
+      className="bg-[#1a1a18] text-[#faf9f7] py-28 md:py-40"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="px-8 md:px-16 lg:px-24">
         {/* Section label */}
         <motion.p
           custom={0}

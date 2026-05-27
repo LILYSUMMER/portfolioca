@@ -15,40 +15,19 @@ const fadeUp: Variants = {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-end pb-20 px-8 md:px-20 lg:px-32 bg-[#faf9f7] overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-between bg-[#faf9f7]">
       {/* Subtle vertical rule */}
       <div
         className="absolute top-0 right-0 w-px h-full bg-[#d6d0c8] opacity-60"
         style={{ right: "18%" }}
       />
 
-      {/* Decorative editorial index */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, delay: 0.2 }}
-        className="absolute top-28 right-8 md:right-20 lg:right-32 text-right"
-      >
-        <p
-          className="text-xs tracking-[0.2em] uppercase text-[#8a8880] mb-1"
-          style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
-        >
-          Portfolio
-        </p>
-        <p
-          className="text-xs tracking-[0.2em] uppercase text-[#8a8880]"
-          style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
-        >
-          2024 — 2026
-        </p>
-      </motion.div>
-
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.6 }}
-        className="absolute bottom-8 right-8 md:right-20 lg:right-32 flex flex-col items-center gap-2"
+        className="absolute bottom-8 right-8 md:right-16 lg:right-24 flex flex-col items-center gap-2"
       >
         <motion.div
           animate={{ y: [0, 6, 0] }}
@@ -63,20 +42,42 @@ export default function Hero() {
         </span>
       </motion.div>
 
-      {/* Main content */}
-      <div className="max-w-7xl mx-auto w-full">
-        {/* Category label */}
+      {/* Top: Category label + index */}
+      <div className="px-8 md:px-16 lg:px-24 pt-36 flex items-start justify-between">
         <motion.p
           custom={0.4}
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          className="text-xs tracking-[0.25em] uppercase text-[#8a8880] mb-8"
+          className="text-xs tracking-[0.25em] uppercase text-[#8a8880]"
           style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
         >
           Visual Presentation Associate
         </motion.p>
 
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, delay: 0.2 }}
+          className="text-right"
+        >
+          <p
+            className="text-xs tracking-[0.2em] uppercase text-[#8a8880] mb-1"
+            style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
+          >
+            Portfolio
+          </p>
+          <p
+            className="text-xs tracking-[0.2em] uppercase text-[#8a8880]"
+            style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
+          >
+            2024 — 2026
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Bottom: Main content */}
+      <div className="px-8 md:px-16 lg:px-24 pb-20">
         {/* Main headline */}
         <div className="overflow-hidden mb-4">
           <motion.h1

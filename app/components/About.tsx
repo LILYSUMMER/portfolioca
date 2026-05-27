@@ -20,8 +20,8 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" ref={ref} className="py-28 md:py-40 px-8 md:px-20 lg:px-32 bg-[#faf9f7]">
-      <div className="max-w-7xl mx-auto">
+    <section id="about" ref={ref} className="py-28 md:py-40 bg-[#faf9f7]">
+      <div className="px-8 md:px-16 lg:px-24">
         {/* Section label */}
         <motion.p
           custom={0}
@@ -166,7 +166,7 @@ export default function About() {
             </div>
 
             {/* Decorative element */}
-            <div className="absolute -bottom-6 -left-6 w-24 h-24 border border-[#d6d0c8] -z-10" />
+            <div className="absolute bottom-0 left-0 w-24 h-24 border border-[#d6d0c8] -z-10" />
           </motion.div>
         </div>
       </div>

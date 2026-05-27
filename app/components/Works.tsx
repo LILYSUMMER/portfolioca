@@ -176,8 +176,8 @@ export default function Works() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="works" className="py-28 md:py-40 px-8 md:px-20 lg:px-32 bg-[#f4f0eb]">
-      <div className="max-w-7xl mx-auto">
+    <section id="works" className="py-28 md:py-40 bg-[#f4f0eb]">
+      <div className="px-8 md:px-16 lg:px-24">
         {/* Section header */}
         <div ref={ref} className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-20">
           <div>

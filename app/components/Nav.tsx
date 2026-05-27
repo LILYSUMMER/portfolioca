@@ -30,7 +30,7 @@ export default function Nav() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-8 md:px-20 lg:px-32 flex items-center justify-between h-16 md:h-20">
+      <div className="px-8 md:px-16 lg:px-24 flex items-center justify-between h-16 md:h-20">
         <a
           href="#"
           className="text-[#1a1a18] text-lg tracking-widest uppercase"
