@@ -13,7 +13,8 @@ interface Project {
   title: string;
   description: string;
   tags: string[];
-  image: string;
+  image?: string;
+  video?: string;
   span: "tall" | "wide" | "square";
 }
 
@@ -26,8 +27,7 @@ const projects: Project[] = [
     description:
       "Hand-fabricated sculptural props that blur the line between art object and display fixture. Each piece is built with precision, material intelligence, and an eye for luxury context.",
     tags: ["Sculpture", "Prop Fabrication", "Mixed Media"],
-    image:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85",
+    image: "/test02.jpeg",
     span: "tall",
   },
   {
@@ -38,8 +38,7 @@ const projects: Project[] = [
     description:
       "Large-scale physical booth installations designed for Epispace — transforming raw architecture into curated brand worlds through light, material, and spatial flow.",
     tags: ["Spatial Design", "Installation Art", "Brand Environments"],
-    image:
-      "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=900&q=85",
+    image: "/test03.jpeg",
     span: "wide",
   },
   {
@@ -50,8 +49,7 @@ const projects: Project[] = [
     description:
       "Concept-driven VM layouts and 3D spatial arrangements that translate brand narrative into physical retail experience — balancing editorial restraint with commercial impact.",
     tags: ["Visual Merchandising", "3D Concepts", "Retail Design"],
-    image:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900&q=85",
+    video: "/test01.mp4",
     span: "square",
   },
 ];
@@ -77,19 +75,35 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Image container */}
+      {/* Media container */}
       <div
         className={`relative ${aspectMap[project.span]} overflow-hidden bg-[#e8e2d9] mb-6 cursor-pointer`}
       >
-        <Image
-          src={project.image}
-          alt={project.title}
-          fill
-          className={`object-cover transition-all duration-700 ${
-            hovered ? "scale-105 grayscale-0" : "scale-100 grayscale"
-          }`}
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
+        {project.video ? (
+          <video
+            src={project.video}
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-label={project.title}
+            className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ${
+              hovered ? "scale-105 grayscale-0" : "scale-100 grayscale"
+            }`}
+          />
+        ) : (
+          project.image && (
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className={`object-cover transition-all duration-700 ${
+                hovered ? "scale-105 grayscale-0" : "scale-100 grayscale"
+              }`}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          )
+        )}
 
         {/* Hover overlay */}
         <motion.div
